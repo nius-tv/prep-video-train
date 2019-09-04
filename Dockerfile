@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 RUN apt-get update -y
 
 RUN apt-get install -y cmake # required by dlib
+RUN apt-get install -y ffmpeg
 RUN apt-get install -y libboost-all-dev # required by dlib
 RUN apt-get install -y libsm6 # required by opencv
 RUN apt-get install -y python3.5
