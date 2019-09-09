@@ -1,14 +1,14 @@
 import cv2
 import dlib
 
-from config import shape_predictor_model_path
+from config import SHAPE_PREDICTOR_MODEL_PATH
 
 
 class FaceLandmarks(object):
 
     def __init__(self):
         self.detector = dlib.get_frontal_face_detector()
-        self.predictor = dlib.shape_predictor(shape_predictor_model_path)
+        self.predictor = dlib.shape_predictor(SHAPE_PREDICTOR_MODEL_PATH)
 
     def get(self, input_image):
         image = cv2.imread(input_image)
