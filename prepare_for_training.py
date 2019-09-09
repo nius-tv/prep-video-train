@@ -24,8 +24,8 @@ def prepare_images_for_training(train_dir):
 
 if __name__ == '__main__':
     train_dirs = [
-        {'input': '/data/landmarks/*', 'output': '/data/train-A'},
-        {'input': '/data/frames/*'   , 'output': '/data/train-B'}
+        {'input': '/data/landmarks/*', 'output': '/data/pix2pix/train_A'},
+        {'input': '/data/frames/*'   , 'output': '/data/pix2pix/train_B'}
     ]
     for train_dir in train_dirs:
         prepare_images_for_training(train_dir)
