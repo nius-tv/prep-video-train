@@ -1,20 +1,20 @@
 import cv2
 import json
-import np
+import numpy as np
 
-from config import OUTPUT_VIDEO_RESOLUTION
+from config import ORIGINAL_VIDEO_RESOLUTION
 
 
 def landmarks_to_image(landmarks, output_file):
-    shape = (OUTPUT_VIDEO_RESOLUTION[1], OUTPUT_VIDEO_RESOLUTION[0]) # columns, rows
+    shape = (ORIGINAL_VIDEO_RESOLUTION[1], ORIGINAL_VIDEO_RESOLUTION[0]) # columns, rows
     image = np.zeros(shape, np.uint8)
     points = landmarks['outer_lip'] + landmarks['inner_lip'] # use only mouth landmarks
 
     color = (255, 255, 255) # white
-    for position in points:
+    for x, y in points:
         # 3 = radius
-        # 1 = thickness
-        cv2.circle(image, position, 3, color, 1)
+        # -1 = thinkness, when value is set to -1, the circle will be filled with color
+        cv2.circle(image, (x, y), 3, color, -1)
 
     cv2.imwrite(output_file, image)
 
