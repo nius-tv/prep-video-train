@@ -1,15 +1,17 @@
 import glob
 import json
 
+from config import *
 from face_landmarks import FaceLandmarks
 from pathlib import Path
 
 
 if __name__ == '__main__':
     face_landmarks = FaceLandmarks()
-    
-    output_file = open('/data/landmarks.json.txt', 'w')
-    files = glob.iglob('/data/frames/*')
+
+    output_file = open(LANDMARKS_FILE_PATH, 'w')
+    frames_dir = '{}/*'.format(FRAMES_DIR_PATH)
+    files = glob.iglob(frames_dir)
 
     for i, file_path in enumerate(files):
         print(i + 1, file_path)

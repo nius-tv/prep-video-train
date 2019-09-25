@@ -2,13 +2,13 @@ import cv2
 import json
 import numpy as np
 
-from config import ORIGINAL_VIDEO_RESOLUTION
+from config import *
 
 
 def landmarks_to_image(landmarks, output_file):
     shape = (ORIGINAL_VIDEO_RESOLUTION[1], ORIGINAL_VIDEO_RESOLUTION[0]) # columns, rows
     image = np.zeros(shape, np.uint8)
-    points = landmarks['outer_lip'] + landmarks['inner_lip'] # use only mouth landmarks
+    points = landmarks['outer_lip'] + landmarks['inner_lip'] # only use mouth landmarks
 
     color = (255, 255, 255) # white
     for x, y in points:
@@ -20,7 +20,7 @@ def landmarks_to_image(landmarks, output_file):
 
 
 if __name__ == '__main__':
-    with open('/data/landmarks.json.txt') as f:
+    with open(LANDMARKS_FILE_PATH) as f:
         lines = f.readlines()
 
     for i, line in enumerate(lines):
@@ -28,5 +28,5 @@ if __name__ == '__main__':
         frame = data['frame']
         print(i + 1, frame)
 
-        output_file = '/data/landmarks/{}.png'.format(frame)
+        output_file = '{}/{}.{}'.format(LANDMARKS_DIR_PATH, frame, IMG_FMT)
         landmarks_to_image(data, output_file)

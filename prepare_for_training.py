@@ -1,7 +1,7 @@
 import cv2
 import glob
 
-from config import SCALED_VIDEO_RESOLUTION
+from config import *
 from scipy import ndimage
 
 
@@ -15,7 +15,7 @@ def prepare_images_for_training(train_dir):
         # Resize image
         image = cv2.resize(image, SCALED_VIDEO_RESOLUTION, interpolation=cv2.INTER_CUBIC)
         # Rotate image
-        image = ndimage.rotate(image, 90)
+        image = ndimage.rotate(image, ROTATION_ANGLE)
         # Save image
         filename = image_path.split('/')[-1]
         output_file = '{}/{}'.format(output_dir, filename)
@@ -24,8 +24,14 @@ def prepare_images_for_training(train_dir):
 
 if __name__ == '__main__':
     train_dirs = [
-        {'input': '/data/landmarks/*', 'output': '/data/pix-to-pix/train_A'},
-        {'input': '/data/frames/*'   , 'output': '/data/pix-to-pix/train_B'}
+        {
+            'input': '{}/*'.format(LANDMARKS_DIR_PATH),
+            'output': TRAIN_A_DIR_PATH
+        },
+        {
+            'input': '{}/*'.format(FRAMES_DIR_PATH),
+            'output': TRAIN_B_DIR_PATH
+        }
     ]
     for train_dir in train_dirs:
         prepare_images_for_training(train_dir)

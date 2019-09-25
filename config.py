@@ -1,3 +1,10 @@
+FRAMES_DIR_PATH = '/data/frames'
+IMG_FMT = 'png'
+LANDMARKS_DIR_PATH = '/data/landmarks'
+LANDMARKS_FILE_PATH = '/data/landmarks.json.txt'
 ORIGINAL_VIDEO_RESOLUTION = (1080, 1920) # width, height
+ROTATION_ANGLE = 90
 SCALED_VIDEO_RESOLUTION = (512, 1024) # width, height
 SHAPE_PREDICTOR_MODEL_PATH = '/models/shape_predictor_68_face_landmarks.dat'
+TRAIN_A_DIR_PATH = '/data/train_A'
+TRAIN_B_DIR_PATH = '/data/train_B'
