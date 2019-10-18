@@ -19,7 +19,7 @@ def prepare_images_for_training(train_dir):
         # Save image
         filename = image_path.split('/')[-1]
         output_file = '{}/{}'.format(output_dir, filename)
-        cv2.imwrite(output_file, image)
+        assert cv2.imwrite(output_file, image)
 
 
 if __name__ == '__main__':
