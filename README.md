@@ -11,7 +11,6 @@ docker run \
 
 ffmpeg -y \
     -i /data/train.mov \
-    -framerate 29.97 \
     /data/frames/%010d.png
 
 python3 extract_landmarks.py
