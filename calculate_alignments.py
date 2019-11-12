@@ -70,14 +70,17 @@ if __name__ == '__main__':
         if abs(left_point[1] - g_left_point[1]) + abs(right_point[1] - g_right_point[1]) > EYE_TOLERANCE:
             continue
         # Check nose
-        if abs(nose_point[0] - g_nose_point[0]) > NOSE_TOLERANCE \
-            or abs(nose_point[1] - g_nose_point[1]) > NOSE_TOLERANCE:
+        if abs(nose_point_x[0] - g_nose_point_x[0]) > NOSE_TOLERANCE \
+            or abs(nose_point_x[1] - g_nose_point_x[1]) > NOSE_TOLERANCE:
+            continue
+        if abs(nose_point_y[0] - g_nose_point_y[0]) > NOSE_TOLERANCE \
+            or abs(nose_point_y[1] - g_nose_point_y[1]) > NOSE_TOLERANCE:
             continue
 
-        offset = np.subtract(nose_point, g_nose_point)
-        print(offset)
-
         frame = points['frame']
-        offset = offset.tolist()
-        line = '{},{},{}\n'.format(frame, offset[0], offset[1])
+        offset_x = g_nose_point_x[0] - nose_point_x[0]
+        offset_y = g_nose_point_y[1] - nose_point_y[1]
+
+        print(frame, offset_x, offset_y)
+        line = '{},{},{}\n'.format(frame, offset_x, offset_y)
         output_file.write(line)
