@@ -1,5 +1,6 @@
 import cv2
 import glob
+import os
 
 from config import *
 from scipy import ndimage
@@ -18,6 +19,10 @@ def prepare_images_for_training(train_dir):
         image = ndimage.rotate(image, ROTATION_ANGLE)
         # Save image
         filename = image_path.split('/')[-1]
+        if output_dir == TRAIN_B_DIR_PATH:
+            train_a_file_path = '{}/{}'.format(TRAIN_A_DIR_PATH, filename)
+            if not os.path.exists(train_a_file_path):
+                continue
         output_file = '{}/{}'.format(output_dir, filename)
         assert cv2.imwrite(output_file, image)
 
