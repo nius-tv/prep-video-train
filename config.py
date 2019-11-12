@@ -1,3 +1,4 @@
+ALIGNED_DIR_PATH = '/data/aligned'
 FRAMES_DIR_PATH = '/data/frames'
 IMG_FMT = 'png'
 LANDMARKS_DIR_PATH = '/data/landmarks'
