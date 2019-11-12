@@ -1,3 +1,8 @@
+mkdir /data/frames
+mkdir /data/landmarks
+mkdir /data/train_A
+mkdir /data/train_B
+
 docker build \
 	-t prep-video-train \
 	.
@@ -30,3 +35,6 @@ Note: After Effects might change the color "scheme" of the images, resulting in 
 8) Run python3 landmarks_to_images.py
 
 9) Run python3 prepare_for_training.py
+
+10) Copy files to GCS.
+	gsutil -m copy -r /data gs://plasmic-training/prep-video-train
