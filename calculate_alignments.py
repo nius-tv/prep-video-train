@@ -49,15 +49,19 @@ if __name__ == '__main__':
     points = get_points(all_points, part='right_eye', asc=True, axis='x')
     g_right_point = get_median_point(points)
 
+    points = get_points(all_points, part='nose_bridge', asc=False, axis='x')
+    g_nose_point_x = get_median_point(points)
+
     points = get_points(all_points, part='nose_bridge', asc=False, axis='y')
-    g_nose_point = get_median_point(points)
+    g_nose_point_y = get_median_point(points)
 
     output_file = open(ALIGNMENTS_FILE_PATH, 'w')
 
     for points in all_points:
         left_point = get_first_sort(points['left_eye'], asc=False, axis='x')
         right_point = get_first_sort(points['right_eye'], asc=True, axis='x')
-        nose_point = get_first_sort(points['nose_bridge'], asc=False, axis='y')
+        nose_point_x = get_first_sort(points['nose_bridge'], asc=False, axis='x')
+        nose_point_y = get_first_sort(points['nose_bridge'], asc=False, axis='y')
 
         # Check eye X
         if abs(left_point[0] - g_left_point[0]) + abs(right_point[0] - g_right_point[0]) > EYE_TOLERANCE:
