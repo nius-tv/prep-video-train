@@ -14,7 +14,7 @@ def prepare_images_for_training(train_dir):
         print(i + 1, image_path)
         image = cv2.imread(image_path)
         # Resize image
-        image = cv2.resize(image, SCALED_VIDEO_RESOLUTION, interpolation=cv2.INTER_CUBIC)
+        image = cv2.resize(image, SCALED_VIDEO_RESOLUTION, interpolation=cv2.INTER_AREA)
         # Rotate image
         image = ndimage.rotate(image, ROTATION_ANGLE)
         # Save image
