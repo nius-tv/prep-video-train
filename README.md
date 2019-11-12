@@ -1,6 +1,6 @@
 docker build \
-    -t prep-video \
-    .
+	-t prep-video-train \
+	.
 
 docker run \
     -v $(pwd):/app \
