@@ -1,9 +1,9 @@
-import cv2
 import glob
 import os
 
 from config import *
-from scipy import ndimage
+from PIL import Image
+from resizeimage import resizeimage
 
 
 def prepare_images_for_training(train_dir):
@@ -12,11 +12,11 @@ def prepare_images_for_training(train_dir):
 
     for i, image_path in enumerate(files):
         print(i + 1, image_path)
-        image = cv2.imread(image_path)
+        image = Image.open(image_path)
         # Resize image
-        image = cv2.resize(image, SCALED_VIDEO_RESOLUTION, interpolation=cv2.INTER_AREA)
+        image = resizeimage.resize_cover(image, SCALED_VIDEO_RESOLUTION)
         # Rotate image
-        image = ndimage.rotate(image, ROTATION_ANGLE)
+        image = image.rotate(ROTATION_ANGLE, expand=1)
         # Save image
         filename = image_path.split('/')[-1]
         if output_dir == TRAIN_B_DIR_PATH:
@@ -24,7 +24,7 @@ def prepare_images_for_training(train_dir):
             if not os.path.exists(train_a_file_path):
                 continue
         output_file = '{}/{}'.format(output_dir, filename)
-        assert cv2.imwrite(output_file, image)
+        image.save(output_file)
 
 
 if __name__ == '__main__':
