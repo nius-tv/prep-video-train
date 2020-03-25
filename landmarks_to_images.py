@@ -6,9 +6,17 @@ from config import *
 
 
 def landmarks_to_image(landmarks, output_file):
-    shape = (ORIGINAL_VIDEO_RESOLUTION[1], ORIGINAL_VIDEO_RESOLUTION[0]) # columns, rows
+    shape = (SCALED_VIDEO_RESOLUTION[1], SCALED_VIDEO_RESOLUTION[0]) # columns, rows
     image = np.zeros(shape, np.uint8)
-    points = landmarks['outer_lip'] + landmarks['inner_lip'] # only use mouth landmarks
+    points = landmarks['jaw'] +\
+            landmarks['left_eyebrow'] +\
+            landmarks['right_eyebrow'] +\
+            landmarks['nose_bridge'] +\
+            landmarks['lower_nose'] +\
+            landmarks['left_eye'] +\
+            landmarks['right_eye'] +\
+            landmarks['outer_lip'] +\
+            landmarks['inner_lip']
 
     color = (255, 255, 255) # white
     for x, y in points:
