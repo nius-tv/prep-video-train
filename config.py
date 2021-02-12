@@ -1,11 +1,7 @@
-ALIGNED_DIR_PATH = '/data/aligned'
-ALIGNMENTS_FILE_PATH = '/data/aligments.txt'
-EYE_TOLERANCE = 15 # heuristic
 FRAMES_DIR_PATH = '/data/frames'
 IMG_FMT = 'png'
 LANDMARKS_DIR_PATH = '/data/landmarks'
 LANDMARKS_FILE_PATH = '/data/landmarks.json.txt'
-NOSE_TOLERANCE = 15 # heuristic
 ROTATION_ANGLE = 90
 SCALED_VIDEO_RESOLUTION = (512, 1024) # width, height
 SHAPE_PREDICTOR_MODEL_PATH = '/models/shape_predictor_68_face_landmarks.dat'
